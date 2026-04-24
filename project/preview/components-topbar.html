@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"/>
+<title>Topbar &amp; Nav</title>
+<link rel="stylesheet" href="_card.css"/>
+<style>
+.bar { background:#E86A4C; color:#fff; box-shadow:0 2px 10px rgb(194 78 50 / 22%); border-radius:10px; overflow:hidden;}
+.inner { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; gap:14px;}
+.brand { font-weight:800; white-space:nowrap; font-size:15px;}
+.nav { display:flex; gap:8px;}
+.nav button { border:0; cursor:pointer; border-radius:8px; padding:8px 14px; font-weight:600; background:transparent; color:#FFE4D6; font-size:13px;}
+.nav button.active { background:#C24E32; color:#fff;}
+.actions { display:flex; gap:8px; align-items:center;}
+.ghost { background:#C24E32; color:#fff; border:0; padding:8px 12px; border-radius:8px; font-weight:600; font-size:13px; cursor:pointer;}
+.session { display:flex; gap:8px; align-items:center; font-size:13px;}
+</style></head>
+<body><div class="card" style="padding:18px">
+<h4>Topbar · Logged In</h4>
+<div class="bar"><div class="inner">
+  <div class="brand">📘 課室及功能室預約系統</div>
+  <div class="nav">
+    <button class="active">預約課室</button>
+    <button>我的預約</button>
+    <button>時間表列印</button>
+    <button>管理後台</button>
+  </div>
+  <div class="actions"><div class="session"><span>👤 jessi</span><button class="ghost" style="padding:5px 10px">登出</button></div></div>
+</div></div>
+</div></body></html>

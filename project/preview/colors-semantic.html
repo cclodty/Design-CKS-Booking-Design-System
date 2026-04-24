@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"/>
+<title>Semantic colors</title>
+<link rel="stylesheet" href="_card.css"/>
+<style>
+.col { flex: 1 1 0; min-width: 220px; }
+.col h5 { margin: 0 0 8px; font-size: 12px; font-weight: 600; color: var(--cks-fg2); letter-spacing: .02em; }
+.group { display: flex; gap: 6px; }
+.sw { flex: 1; border-radius: 8px; overflow: hidden; border: 1px solid var(--cks-line); background: #fff; }
+.sw .chip { height: 44px; }
+.sw .hex { font-family: var(--cks-font-mono); font-size: 10.5px; color: var(--cks-fg3); padding: 4px 6px; text-align:center;}
+.demo { margin-top: 8px; border-radius: 10px; padding: 10px 12px; font-size: 12.5px; display: flex; align-items: center; gap: 8px;}
+</style></head>
+<body><div class="card">
+<h4>Semantic · Status</h4>
+<div class="row" style="gap:22px">
+  <div class="col">
+    <h5>Available / Success</h5>
+    <div class="group">
+      <div class="sw"><div class="chip" style="background:#2F9E5A"></div><div class="hex">#10A957</div></div>
+      <div class="sw"><div class="chip" style="background:#2F9E5A"></div><div class="hex">#1FAA57</div></div>
+      <div class="sw"><div class="chip" style="background:#1D6F3E"></div><div class="hex">#15893D</div></div>
+      <div class="sw"><div class="chip" style="background:#DCF2E3"></div><div class="hex">#D9F7E1</div></div>
+    </div>
+    <div class="demo" style="background:#F1FAF4;border:1px solid #9CD7B1;color:#1D6F3E">🕒 第3節 10:05-10:45 <span style="margin-left:auto;background:#DCF2E3;border-radius:6px;padding:1px 7px;font-size:11px">可預約</span></div>
+  </div>
+  <div class="col">
+    <h5>Conflict / Danger</h5>
+    <div class="group">
+      <div class="sw"><div class="chip" style="background:#D9443C"></div><div class="hex">#E14F61</div></div>
+      <div class="sw"><div class="chip" style="background:#B03529"></div><div class="hex">#C24857</div></div>
+      <div class="sw"><div class="chip" style="background:#EEB3A9"></div><div class="hex">#EFB8BD</div></div>
+      <div class="sw"><div class="chip" style="background:#FDF4F2"></div><div class="hex">#FFF7F8</div></div>
+    </div>
+    <div class="demo" style="background:#FDF4F2;border:1px solid #EEB3A9;color:#B03529">🕒 第4節 10:50-11:35 <span style="margin-left:auto;background:#FCEAE6;border-radius:6px;padding:1px 7px;font-size:11px;border:1px solid #EEB3A9">已預約</span></div>
+  </div>
+</div>
+</div></body></html>

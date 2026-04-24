@@ -1,0 +1,120 @@
+/* =========================================================
+   CKS Booking Design System — Colors & Type
+   Palette: C · Sunset Coral (warm coral + ink + cream)
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap");
+
+:root {
+  /* ---------- Palette (canvas & surfaces) ---------- */
+  --cks-bg:            #f7f1ea;   /* cream canvas */
+  --cks-surface:       #ffffff;   /* card / panel */
+  --cks-surface-2:     #fbf6ef;   /* nested panel */
+  --cks-surface-3:     #f1e6d8;   /* count badge bg */
+  --cks-line:          #e8ddcd;   /* default border (warm) */
+  --cks-line-strong:   #d8ccba;   /* input border */
+  --cks-line-soft:     #efe4d3;   /* seg-btn inactive bg */
+
+  /* ---------- Brand · Sunset Coral ---------- */
+  --cks-brand:         #e86a4c;   /* primary action, active */
+  --cks-brand-press:   #f28c6e;   /* hover / press */
+  --cks-brand-dark:    #c24e32;   /* underline / deep */
+  --cks-brand-deep:    #c24e32;   /* nav active bg */
+  --cks-brand-tint:    #ffe4d6;   /* soft fill / nav inactive text */
+
+  /* ---------- Ink (text) · Night Sky ---------- */
+  --cks-fg1:           #22314f;   /* primary text */
+  --cks-fg2:           #4a5a7a;   /* secondary text */
+  --cks-fg3:           #6f7e99;   /* muted copy */
+  --cks-fg4:           #93a0b6;   /* empty-state text */
+  --cks-on-brand:      #ffffff;
+
+  /* ---------- Status — Success (warm green) ---------- */
+  --cks-ok:            #2f9e5a;
+  --cks-ok-strong:     #258c4e;
+  --cks-ok-deep:       #1d6f3e;
+  --cks-ok-border:     #9cd7b1;
+  --cks-ok-bg:         #f1faf4;
+  --cks-ok-pill:       #dcf2e3;
+
+  /* ---------- Status — Danger (warm red) ---------- */
+  --cks-danger:        #d9443c;
+  --cks-danger-deep:   #b03529;
+  --cks-danger-border: #f1b8b0;
+  --cks-danger-bg:     #fdf4f2;
+  --cks-danger-soft:   #fceae6;
+  --cks-danger-line:   #eeb3a9;
+  --cks-danger-text:   #b03529;
+
+  /* ---------- Admin / Dark ---------- */
+  --cks-dark:          #22314f;
+
+  /* ---------- Shadows ---------- */
+  --cks-shadow-topbar: 0 2px 12px rgb(194 78 50 / 18%);
+  --cks-backdrop:      rgb(34 49 79 / 45%);
+
+  /* ---------- Radii ---------- */
+  --cks-r-sm:  6px;
+  --cks-r-md:  8px;
+  --cks-r-lg: 10px;
+  --cks-r-xl: 12px;
+
+  /* ---------- Spacing ---------- */
+  --cks-sp-1:  4px;
+  --cks-sp-2:  8px;
+  --cks-sp-3: 10px;
+  --cks-sp-4: 12px;
+  --cks-sp-5: 14px;
+  --cks-sp-6: 18px;
+  --cks-sp-7: 20px;
+  --cks-sp-8: 30px;
+
+  --cks-app-width: min(990px, calc(100vw - 30px));
+
+  --cks-font-sans: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC",
+                   system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --cks-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --cks-t-h1:      22px;
+  --cks-t-h2:      18px;
+  --cks-t-h3:      16px;
+  --cks-t-body:    14px;
+  --cks-t-small:   13px;
+  --cks-t-caption: 12px;
+
+  --cks-lh-h1:     28px;
+  --cks-lh-h2:     26px;
+  --cks-lh-h3:     24px;
+  --cks-lh-body:   22px;
+  --cks-lh-small:  20px;
+  --cks-lh-cap:    18px;
+
+  --cks-w-regular:  400;
+  --cks-w-medium:   500;
+  --cks-w-semibold: 600;
+  --cks-w-bold:     700;
+  --cks-w-black:    800;
+
+  --cks-ease:      cubic-bezier(.2,.6,.2,1);
+  --cks-dur-fast:  120ms;
+  --cks-dur-base:  150ms;
+}
+
+.cks-root,
+.cks-root * { box-sizing: border-box; }
+
+.cks-root {
+  font-family: var(--cks-font-sans);
+  color: var(--cks-fg1);
+  background: var(--cks-bg);
+  font-size: var(--cks-t-body);
+  line-height: var(--cks-lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.cks-h1 { font-size: var(--cks-t-h1); line-height: var(--cks-lh-h1); font-weight: 700; margin: 0; }
+.cks-h2 { font-size: var(--cks-t-h2); line-height: var(--cks-lh-h2); font-weight: 700; margin: 0; }
+.cks-h3 { font-size: var(--cks-t-h3); line-height: var(--cks-lh-h3); font-weight: 700; margin: 0; }
+.cks-body   { font-size: var(--cks-t-body);    line-height: var(--cks-lh-body); }
+.cks-small  { font-size: var(--cks-t-small);   line-height: var(--cks-lh-small); color: var(--cks-fg3); }
+.cks-caption{ font-size: var(--cks-t-caption); line-height: var(--cks-lh-cap);   color: var(--cks-fg3); }

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"/>
+<title>Spacing</title>
+<link rel="stylesheet" href="_card.css"/>
+<style>
+.scale { display:grid; gap:8px;}
+.step { display:grid; grid-template-columns: 80px 1fr auto; gap:14px; align-items:center; font-family:var(--cks-font-mono); font-size:11px; color:var(--cks-fg3);}
+.bar { height:14px; background:#E86A4C; border-radius:3px;}
+.name { color:var(--cks-fg1); font-family:var(--cks-font-sans); font-weight:600; font-size:12.5px;}
+</style></head>
+<body><div class="card">
+<h4>Spacing Scale · 4px grid</h4>
+<div class="scale">
+  <div class="step"><span class="name">--sp-1</span><div class="bar" style="width:4px"></div><span>4</span></div>
+  <div class="step"><span class="name">--sp-2</span><div class="bar" style="width:8px"></div><span>8</span></div>
+  <div class="step"><span class="name">--sp-3</span><div class="bar" style="width:10px"></div><span>10</span></div>
+  <div class="step"><span class="name">--sp-4</span><div class="bar" style="width:12px"></div><span>12</span></div>
+  <div class="step"><span class="name">--sp-5</span><div class="bar" style="width:14px"></div><span>14</span></div>
+  <div class="step"><span class="name">--sp-6</span><div class="bar" style="width:18px"></div><span>18 (panel pad)</span></div>
+  <div class="step"><span class="name">--sp-7</span><div class="bar" style="width:20px"></div><span>20</span></div>
+  <div class="step"><span class="name">--sp-8</span><div class="bar" style="width:30px"></div><span>30 (gutter)</span></div>
+</div>
+</div></body></html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"/>
+<title>Buttons</title>
+<link rel="stylesheet" href="_card.css"/>
+<style>
+button { border:0; cursor:pointer; border-radius:8px; padding:8px 14px; font-weight:600; font-family:var(--cks-font-sans); font-size:14px;}
+.primary { background:#E86A4C; color:#fff;}
+.dark { background:#22314F; color:#fff;}
+.green { background:#2F9E5A; color:#fff;}
+.ghost { background:#C24E32; color:#fff;}
+.danger { background:#FCEAE6; border:1px solid #EEB3A9; color:#B03529; border-radius:7px; padding:6px 10px;}
+.link { background:transparent; color:#E86A4C; padding:6px;}
+.disabled { opacity:.5; cursor:not-allowed;}
+.lbl { font-family:var(--cks-font-mono); font-size:10.5px; color:var(--cks-fg3); display:block; margin-top:4px;}
+.cell { display:grid; place-items:start; gap:2px;}
+</style></head>
+<body><div class="card">
+<h4>Buttons</h4>
+<div class="row" style="gap:14px">
+  <div class="cell"><button class="primary">📩 送出預約</button><span class="lbl">.primary</span></div>
+  <div class="cell"><button class="dark">🖨️ 執行列印</button><span class="lbl">.dark</span></div>
+  <div class="cell"><button class="green">⬇ 匯出 CSV</button><span class="lbl">.green</span></div>
+  <div class="cell"><button class="ghost">👥 管理員登入</button><span class="lbl">.ghost-btn</span></div>
+  <div class="cell"><button class="danger">刪除</button><span class="lbl">.danger</span></div>
+  <div class="cell"><button class="link">全選</button><span class="lbl">.link-btn</span></div>
+  <div class="cell"><button class="primary disabled">無權限修改</button><span class="lbl">disabled</span></div>
+</div>
+</div></body></html>

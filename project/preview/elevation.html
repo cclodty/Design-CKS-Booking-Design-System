@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"/>
+<title>Elevation</title>
+<link rel="stylesheet" href="_card.css"/>
+<style>
+.e { flex:1; min-width:180px; background:#fff; border-radius:10px; padding:18px; display:grid; gap:8px;}
+.bar { height:28px; border-radius:6px; background:#E86A4C;}
+.lbl { font-weight:600; font-size:12.5px;}
+.meta { font-family:var(--cks-font-mono); font-size:10.5px; color:var(--cks-fg3);}
+</style></head>
+<body><div class="card">
+<h4>Elevation &amp; Borders</h4>
+<div class="row">
+  <div class="e" style="border:1px solid #E8DDCD"><div class="bar" style="height:18px;background:#F7F1EA;border:1px solid #E8DDCD"></div><span class="lbl">Flat · 1px border</span><span class="meta">panel / card — no shadow</span></div>
+  <div class="e" style="border:1px solid #E8DDCD;box-shadow:0 2px 10px rgb(194 78 50 / 22%)"><div class="bar"></div><span class="lbl">Topbar shadow</span><span class="meta">0 2px 10px #182B66 / 30%</span></div>
+  <div class="e" style="border:1px solid #E8DDCD;background:rgb(34 49 79 / 45%);color:#fff"><div class="bar" style="background:#fff;color:#22314F;display:grid;place-items:center;font-size:11px">dialog</div><span class="lbl" style="color:#fff">Backdrop</span><span class="meta" style="color:#cfd5e2">#19213655 · behind dialog</span></div>
+</div>
+</div></body></html>

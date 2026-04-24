@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CKS Rooms mark">
+  <rect x="0" y="0" width="64" height="64" rx="16" fill="#FFE4D6"></rect>
+  <path d="M16 16 L32 20 L48 16 L48 50 L32 54 L16 50 Z" fill="#fff" stroke="#22314F" stroke-width="2.4" stroke-linejoin="round"></path>
+  <line x1="32" y1="20" x2="32" y2="54" stroke="#22314F" stroke-width="2.4"></line>
+  <line x1="20" y1="26" x2="28" y2="27" stroke="#6F7E99" stroke-width="1.5" stroke-linecap="round"></line>
+  <line x1="20" y1="32" x2="28" y2="33" stroke="#6F7E99" stroke-width="1.5" stroke-linecap="round"></line>
+  <line x1="20" y1="38" x2="26" y2="39" stroke="#6F7E99" stroke-width="1.5" stroke-linecap="round"></line>
+  <line x1="36" y1="27" x2="44" y2="26" stroke="#6F7E99" stroke-width="1.5" stroke-linecap="round"></line>
+  <line x1="36" y1="33" x2="44" y2="32" stroke="#6F7E99" stroke-width="1.5" stroke-linecap="round"></line>
+  <line x1="36" y1="39" x2="42" y2="38" stroke="#6F7E99" stroke-width="1.5" stroke-linecap="round"></line>
+  <circle cx="50" cy="15" r="7.5" fill="#E86A4C" stroke="#fff" stroke-width="2.2"></circle>
+</svg>

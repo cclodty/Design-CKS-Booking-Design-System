@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"/>
+<title>Slot cards</title>
+<link rel="stylesheet" href="_card.css"/>
+<style>
+.grid { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:12px;}
+.slot { border:1px solid #9CD7B1; background:#F1FAF4; border-radius:10px; padding:10px; color:#1D6F3E; display:grid; justify-items:center; gap:6px; font-size:13px;}
+.slot span { background:#DCF2E3; border-radius:6px; padding:1px 7px; font-size:11px;}
+.slot.conflict { border-color:#EEB3A9; background:#FDF4F2; color:#B03529;}
+.slot.conflict span { background:#FCEAE6; border:1px solid #EEB3A9; color:#B03529;}
+.slot.sel { border-color:#E86A4C; background:#FFE4D6; color:#A53F26;}
+.slot.sel span { background:#E86A4C; color:#fff; border:0;}
+</style></head>
+<body><div class="card">
+<h4>Slot Cards · 可預約 / 已預約 / 已選</h4>
+<div class="grid">
+  <button class="slot"><div>🕒</div><div>第1節 8:30-9:10</div><span>可預約</span></button>
+  <button class="slot"><div>🕒</div><div>第2節 9:20-10:00</div><span>可預約</span></button>
+  <button class="slot conflict"><div>🕒</div><div>第3節 10:05-10:45</div><span>已預約</span></button>
+  <button class="slot sel"><div>🕒</div><div>第4節 10:50-11:35</div><span>已選</span></button>
+</div>
+</div></body></html>

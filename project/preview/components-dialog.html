@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"/>
+<title>Dialog</title>
+<link rel="stylesheet" href="_card.css"/>
+<style>
+.wrap { background: rgb(34 49 79 / 45%); border-radius:12px; padding:30px; display:grid; place-items:center;}
+.dialog { width:340px; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 20px 60px rgb(34 49 79 / 28%);}
+.dialog header { display:flex; justify-content:space-between; align-items:center; padding:12px 14px; border-bottom:1px solid #E8DDCD;}
+.dialog h3 { margin:0; font-size:15px; font-weight:700;}
+.link { background:transparent; color:#E86A4C; padding:2px 6px; border:0; cursor:pointer;}
+.body { padding:14px; display:grid; gap:10px;}
+.summary { background:#FBF6EF; border:1px solid #E8DDCD; border-radius:8px; padding:10px; font-size:13px;}
+.summary div { display:flex; justify-content:space-between; padding:4px 0;}
+.summary span:first-child { color:#6F7E99;}
+.summary strong { color:#22314F;}
+label { font-size:12px; font-weight:600; color:#4A5A7A; display:grid; gap:4px;}
+input, select { border:1px solid #D8CCBA; border-radius:8px; padding:8px 10px; font-size:13px; font-family:var(--cks-font-sans);}
+.submit { background:#E86A4C; color:#fff; border:0; border-radius:8px; padding:9px; font-weight:600; cursor:pointer; font-size:13.5px;}
+</style></head>
+<body><div class="card" style="padding:12px">
+<h4>Confirm Dialog</h4>
+<div class="wrap">
+<div class="dialog">
+  <header><h3>確認預約資訊</h3><button class="link">✕</button></header>
+  <div class="body">
+    <div class="summary">
+      <div><span>起始預約日期</span><strong>2026-04-21</strong></div>
+      <div><span>選擇時段</span><strong>第3節 10:05-10:45</strong></div>
+      <div><span>課室名稱</span><strong>120</strong></div>
+    </div>
+    <label>預約人姓名 *<input placeholder="請輸入您的真實姓名"/></label>
+    <label>預約用途 / 備註 *<input placeholder="例如：學會會議、補課..."/></label>
+    <button class="submit">確認送出預約</button>
+  </div>
+</div>
+</div>
+</div></body></html>

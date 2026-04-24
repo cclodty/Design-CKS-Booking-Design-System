@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"/>
+<title>Brand palette — Sunset Coral</title>
+<link rel="stylesheet" href="_card.css"/>
+<style>
+.hero { background:#22314F; color:#fff; border-radius:14px; padding:22px 24px; display:flex; align-items:center; gap:16px;}
+.hero .dot { width:44px; height:44px; border-radius:12px; background:#E86A4C; display:grid; place-items:center; color:#fff; font-weight:800; font-family: var(--cks-font-mono);}
+.hero h3 { margin:0; font-size:18px; font-weight:700;}
+.hero p { margin:2px 0 0; font-size:12.5px; color:#c8d0e0;}
+.row { display:grid; grid-template-columns: repeat(5,1fr); gap:10px; margin-top:14px;}
+.sw { border:1px solid var(--cks-line); border-radius:12px; overflow:hidden; background:#fff;}
+.sw .chip { height:70px;}
+.sw .meta { padding:8px 10px;}
+.sw .name { font-weight:600; font-size:12px; color:#22314F;}
+.sw .role { font-size:10.5px; color:#6F7E99; margin-top:1px;}
+.sw .hex  { font-family: var(--cks-font-mono); font-size:10.5px; color:#6F7E99; margin-top:2px;}
+.usage { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;}
+.pill { border:1px solid var(--cks-line); padding:6px 10px; border-radius:999px; font-size:11.5px; color:#22314F; background:#fff;}
+.apply { margin-top:14px; border-radius:12px; overflow:hidden; border:1px solid var(--cks-line);}
+.apply header { background:#E86A4C; color:#fff; padding:10px 14px; font-weight:700; font-size:13px; display:flex; align-items:center; gap:8px;}
+.apply .body { padding:12px 14px; background:#fff; display:flex; gap:10px; flex-wrap:wrap;}
+.tag { font-size:11px; padding:3px 10px; border-radius:999px; font-weight:700;}
+.tag.brand { background:#E86A4C; color:#fff;}
+.tag.tint  { background:#FFE4D6; color:#C24E32;}
+.tag.ink   { background:#22314F; color:#fff;}
+.tag.ok    { background:#DCF2E3; color:#1D6F3E;}
+.tag.warn  { background:#FCEAE6; color:#B03529;}
+</style></head>
+<body><div class="card" style="padding:18px 22px">
+<h4>Brand palette · Sunset Coral</h4>
+<p style="margin:-6px 0 14px;font-size:12.5px;color:#6F7E99">暖調珊瑚橘為主 accent，夜空藍為文字，奶茶米為 canvas。現代、有溫度、專業。</p>
+
+<div class="hero">
+  <div class="dot">C</div>
+  <div>
+    <h3>課室及功能室預約系統</h3>
+    <p>Sunset Coral · Warm &amp; Designed</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="sw"><div class="chip" style="background:#E86A4C"></div><div class="meta"><div class="name">Coral</div><div class="role">Brand · primary action</div><div class="hex">#E86A4C</div></div></div>
+  <div class="sw"><div class="chip" style="background:#F28C6E"></div><div class="meta"><div class="name">Coral Press</div><div class="role">Hover / active</div><div class="hex">#F28C6E</div></div></div>
+  <div class="sw"><div class="chip" style="background:#C24E32"></div><div class="meta"><div class="name">Coral Deep</div><div class="role">Nav active / underline</div><div class="hex">#C24E32</div></div></div>
+  <div class="sw"><div class="chip" style="background:#FFE4D6"></div><div class="meta"><div class="name">Coral Tint</div><div class="role">Soft fill · selected bg</div><div class="hex">#FFE4D6</div></div></div>
+  <div class="sw"><div class="chip" style="background:#22314F"></div><div class="meta"><div class="name">Night Sky</div><div class="role">Ink · text 1</div><div class="hex">#22314F</div></div></div>
+  <div class="sw"><div class="chip" style="background:#4A5A7A"></div><div class="meta"><div class="name">Slate</div><div class="role">Text 2</div><div class="hex">#4A5A7A</div></div></div>
+  <div class="sw"><div class="chip" style="background:#6F7E99"></div><div class="meta"><div class="name">Mist</div><div class="role">Muted copy</div><div class="hex">#6F7E99</div></div></div>
+  <div class="sw"><div class="chip" style="background:#F7F1EA"></div><div class="meta"><div class="name">Cream</div><div class="role">Canvas bg</div><div class="hex">#F7F1EA</div></div></div>
+  <div class="sw"><div class="chip" style="background:#FBF6EF"></div><div class="meta"><div class="name">Cream 2</div><div class="role">Nested panel</div><div class="hex">#FBF6EF</div></div></div>
+  <div class="sw"><div class="chip" style="background:#E8DDCD"></div><div class="meta"><div class="name">Line</div><div class="role">Border · warm</div><div class="hex">#E8DDCD</div></div></div>
+</div>
+
+<div class="usage">
+  <span class="pill">Primary button → Coral</span>
+  <span class="pill">Selected slot → Coral Tint + Coral border</span>
+  <span class="pill">Topbar → Coral</span>
+  <span class="pill">Admin dark → Night Sky</span>
+  <span class="pill">Canvas → Cream</span>
+</div>
+
+<div class="apply">
+  <header>📘 課室及功能室預約系統 — 套用示例</header>
+  <div class="body">
+    <span class="tag brand">立即預約</span>
+    <span class="tag tint">已選</span>
+    <span class="tag ink">管理者</span>
+    <span class="tag ok">可預約</span>
+    <span class="tag warn">衝突</span>
+  </div>
+</div>
+
+<div style="font-size:11.5px;color:#6F7E99;margin-top:10px">已套用至全站 tokens、UI kit 與所有預覽卡片。</div>
+</div></body></html>
