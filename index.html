@@ -1,11 +1,387 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=project/" />
-  <title>課室預約系統</title>
-</head>
-<body>
-  <p>正在跳轉… <a href="project/">點此前往</a></p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>課室及功能室預約系統</title>
+    <link rel="stylesheet" href="./colors_and_type.css" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body class="cks-root">
+
+    <!-- ===== TOPBAR ===== -->
+    <header class="topbar">
+      <div class="topbar-inner">
+        <!-- Logo lockup -->
+        <div class="brand-lockup">
+          <svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true" class="logo-mark">
+            <rect x="0" y="0" width="64" height="64" rx="16" fill="#FFE4D6"/>
+            <path d="M16 16 L32 20 L48 16 L48 50 L32 54 L16 50 Z" fill="#fff" stroke="#22314F" stroke-width="2.4" stroke-linejoin="round"/>
+            <line x1="32" y1="20" x2="32" y2="54" stroke="#22314F" stroke-width="2.4"/>
+            <circle cx="50" cy="15" r="7.5" fill="#E86A4C" stroke="#fff" stroke-width="2.2"/>
+          </svg>
+          <div class="brand-text">
+            <div class="brand-name">課室預約</div>
+            <div class="brand-sub">CKS ROOM BOOKING</div>
+          </div>
+        </div>
+
+        <!-- Pill nav -->
+        <nav class="main-nav" aria-label="主選單">
+          <button class="nav-btn active" data-view="booking">📅 預約</button>
+          <button class="nav-btn" data-view="myBookings">🕘 我的預約</button>
+          <button class="nav-btn" data-view="print">🖨️ 列印</button>
+          <button class="nav-btn admin-only hidden" data-view="admin">🛠 管理</button>
+        </nav>
+
+        <!-- Right: admin session or login -->
+        <div class="topbar-right">
+          <button id="adminLoginBtn" class="btn btn-outline">👥 管理員登入</button>
+          <div id="adminSession" class="admin-chip hidden">
+            <div class="avatar avatar-ink" id="adminAvatar">J</div>
+            <div class="admin-chip-info">
+              <div class="admin-chip-name">jessi</div>
+              <div class="admin-chip-role">管理員</div>
+            </div>
+            <button id="adminLogoutBtn" class="admin-logout-btn">登出</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main class="main-wrap">
+
+      <!-- ===== BOOKING VIEW ===== -->
+      <section id="booking" class="view active">
+
+        <!-- Hero greeting -->
+        <div class="hero-card">
+          <div class="hero-blob"></div>
+          <div class="hero-content">
+            <div class="hero-eyebrow" id="heroEyebrow">早安 · 今天</div>
+            <h1 class="hero-title">今天想預約哪一間？</h1>
+            <p class="hero-sub">選擇日期 → 挑課室 → 點節次 → 填資訊。三十秒完成。</p>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-mini coral">
+              <div class="stat-mini-label">本室剩餘節次</div>
+              <div class="stat-mini-value" id="heroFreeSlots">—</div>
+            </div>
+            <div class="stat-mini ink">
+              <div class="stat-mini-label">今日全校預約</div>
+              <div class="stat-mini-value" id="heroTotalBookings">0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Date rail -->
+        <div class="date-rail">
+          <div class="date-rail-lbl">日期</div>
+          <div class="date-chips" id="dateChips"></div>
+          <div class="date-picker-wrap">
+            <input id="selectedDate" type="date" class="cks-date-input" />
+          </div>
+        </div>
+
+        <!-- Booking layout -->
+        <div class="booking-layout">
+
+          <!-- Room sidebar -->
+          <aside class="room-sidebar">
+            <div class="sidebar-lbl">課室</div>
+            <div class="room-cards" id="roomCards"></div>
+            <button id="moreRoomsBtn" class="more-rooms-btn">＋ 更多課室 / 功能室</button>
+          </aside>
+
+          <!-- Slot panel -->
+          <div class="panel slot-panel">
+            <div class="slot-panel-head">
+              <div>
+                <h3 class="slot-title" id="selectedRoomTitle">120</h3>
+                <div class="slot-hint">點一下可預約的節次，右側會打開預約表單。</div>
+              </div>
+              <div class="legend">
+                <span class="legend-item"><span class="dot dot-ok"></span>可預約</span>
+                <span class="legend-item"><span class="dot dot-busy"></span>已預約</span>
+              </div>
+            </div>
+
+            <!-- Timeline board -->
+            <div class="timeline-board" id="slotGrid">
+              <div class="slot-band">
+                <div class="band-head">
+                  <span class="band-title">上午</span>
+                  <span class="band-time">08:30 – 12:20</span>
+                </div>
+                <div class="band-slots" id="morningSlots"></div>
+              </div>
+              <div class="slot-band">
+                <div class="band-head">
+                  <span class="band-title">下午</span>
+                  <span class="band-time">14:00 – 16:15</span>
+                </div>
+                <div class="band-slots" id="afternoonSlots"></div>
+              </div>
+            </div>
+
+            <!-- Custom time row -->
+            <div class="custom-time-row">
+              <div class="custom-time-head">
+                <span class="custom-time-title">🕘 跨節或自訂時間</span>
+                <span class="custom-time-hint-txt">適合活動、會議、連堂補課</span>
+              </div>
+              <div class="custom-time-body">
+                <div class="custom-time-inputs">
+                  <span class="custom-lbl">從</span>
+                  <input id="customStart" type="time" class="cks-time-input" />
+                  <span class="custom-lbl">到</span>
+                  <input id="customEnd" type="time" class="cks-time-input" />
+                </div>
+                <div class="custom-preview" id="customPreview">選擇開始與結束時間</div>
+                <button id="customBookBtn" class="btn btn-primary">📩 送出預約</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== MY BOOKINGS VIEW ===== -->
+      <section id="myBookings" class="view">
+        <div class="page-hero">
+          <div class="page-hero-icon">🕘</div>
+          <div class="page-hero-text">
+            <h1>我的預約</h1>
+            <p>輸入您預約時填寫的姓名，查看未來的預約。</p>
+          </div>
+          <form class="page-hero-form" id="myBookingsForm">
+            <input id="myNameInput" type="text" placeholder="輸入預約人姓名" class="cks-input" />
+            <button type="submit" class="btn btn-primary">🔎 查詢</button>
+          </form>
+        </div>
+        <div id="myBookingsContent" class="bookings-content"></div>
+      </section>
+
+      <!-- ===== PRINT VIEW ===== -->
+      <section id="print" class="view">
+        <div class="page-hero">
+          <div class="page-hero-icon">🖨️</div>
+          <div class="page-hero-text">
+            <h1>一週時間表列印</h1>
+            <p>選一週 · 選課室 · 實時預覽 · 送出列印</p>
+          </div>
+          <div class="print-week-nav">
+            <button id="prevWeek" class="btn btn-outline-sm">← 上週</button>
+            <div class="week-label-box">
+              <div class="week-label-eyebrow">WEEK OF</div>
+              <div id="weekLabel" class="week-label-text">—</div>
+            </div>
+            <button id="nextWeek" class="btn btn-outline-sm">下週 →</button>
+            <button id="printBtn" class="btn btn-primary">🖨️ 列印</button>
+          </div>
+        </div>
+
+        <!-- Room picker -->
+        <div class="panel" style="margin-top:14px">
+          <div class="room-picker-head">
+            <div>
+              <h3 class="cks-h3">選擇要列印的課室</h3>
+              <p class="room-picker-hint" id="printRoomHint">每間課室列印一頁。已選 0 間。</p>
+            </div>
+            <div class="room-picker-acts">
+              <button id="checkAllRooms" class="btn btn-link">全選</button>
+              <button id="uncheckAllRooms" class="btn btn-link">全不選</button>
+            </div>
+          </div>
+          <div id="printRoomChecks" class="print-checks"></div>
+        </div>
+
+        <!-- Live preview -->
+        <div class="panel" style="margin-top:14px">
+          <div class="preview-head">
+            <div>
+              <h3 class="cks-h3">預覽</h3>
+              <p class="preview-hint">預覽當前選中的課室本週時間表</p>
+            </div>
+            <div id="previewRoomTabs"></div>
+          </div>
+          <div id="printPreview"></div>
+        </div>
+      </section>
+
+      <!-- ===== ADMIN VIEW ===== -->
+      <section id="admin" class="view">
+        <!-- Dark hero -->
+        <div class="admin-hero">
+          <div class="admin-hero-icon">🛠</div>
+          <div class="admin-hero-text">
+            <h1>管理後台</h1>
+            <p>管理未來的所有預約、帳戶與權限</p>
+          </div>
+          <div class="admin-hero-acts">
+            <button id="refreshAdmin" class="btn btn-ghost">⟳ 重新整理</button>
+            <button id="exportCsv" class="btn btn-light">⬇ 匯出 CSV</button>
+          </div>
+        </div>
+
+        <!-- Stat cards -->
+        <div class="stat-cards" id="adminStats"></div>
+
+        <!-- Tab bar -->
+        <div class="tab-bar">
+          <button class="admin-tab active" data-admin-tab="records">📝 預約記錄</button>
+          <button class="admin-tab" data-admin-tab="accounts">👥 帳戶管理</button>
+        </div>
+
+        <!-- Records -->
+        <div class="panel" id="adminRecordsPanel" style="margin-top:12px">
+          <div class="filter-bar">
+            <input id="adminSearch" type="search" placeholder="搜尋姓名、用途、課室..." class="cks-input filter-search" />
+            <select id="adminRoomFilter" class="cks-select filter-room">
+              <option value="all">所有課室</option>
+            </select>
+            <span id="adminCount" class="count-pill coral-pill">0</span>
+          </div>
+          <div class="table-wrap">
+            <table class="records-table">
+              <thead>
+                <tr>
+                  <th>日期</th>
+                  <th>時間</th>
+                  <th>課室 / 功能室</th>
+                  <th>預約人</th>
+                  <th>用途</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="adminRows"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Accounts -->
+        <div class="panel hidden" id="adminAccountsPanel" style="margin-top:12px">
+          <h2 class="cks-h2" style="margin-bottom:4px">帳戶管理</h2>
+          <p class="panel-sub">後續可接 Firebase Authentication。</p>
+          <div class="account-form">
+            <input placeholder="輸入管理員帳號" class="cks-input" />
+            <input type="password" placeholder="密碼" class="cks-input" />
+            <select class="cks-select">
+              <option>一般管理員</option>
+              <option>超級管理員</option>
+            </select>
+            <button class="btn btn-primary">新增帳戶</button>
+          </div>
+          <div class="accounts-list">
+            <div class="account-row">
+              <div class="avatar avatar-ink">C</div>
+              <div class="account-info">
+                <div class="account-name">cc***n</div>
+                <div class="account-role">超級管理員</div>
+              </div>
+              <button class="btn btn-outline" disabled>無權限修改</button>
+            </div>
+            <div class="account-row">
+              <div class="avatar avatar-ink">J</div>
+              <div class="account-info">
+                <div class="account-name">jessi（您）</div>
+                <div class="account-role">一般管理員</div>
+              </div>
+              <button class="btn btn-outline">編輯</button>
+            </div>
+            <div class="account-row">
+              <div class="avatar avatar-ink">M</div>
+              <div class="account-info">
+                <div class="account-name">moses</div>
+                <div class="account-role">一般管理員</div>
+              </div>
+              <button class="btn btn-outline" disabled>無權限修改</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ===== BOOKING SHEET OVERLAY ===== -->
+    <div id="bookingSheet" class="sheet-overlay hidden" aria-hidden="true">
+      <form id="bookingSheetForm" class="booking-sheet" novalidate>
+        <header class="sheet-header">
+          <div class="sheet-title-row">
+            <div class="sheet-icon-wrap">📩</div>
+            <h3 class="sheet-title">送出預約</h3>
+            <button type="button" id="closeSheet" class="icon-close-btn" aria-label="關閉">✕</button>
+          </div>
+          <div class="step-bar">
+            <div class="step-seg" id="stepSeg1"></div>
+            <div class="step-seg" id="stepSeg2"></div>
+          </div>
+        </header>
+
+        <div class="sheet-body">
+          <div class="summary-card" id="sheetSummary"></div>
+
+          <!-- Step 1 -->
+          <div id="sheetStep1" class="sheet-step">
+            <label class="cks-field">
+              <span class="field-label">您的姓名</span>
+              <input id="bookerName" type="text" placeholder="例如：王小明" class="cks-input" />
+              <span class="field-hint">預約記錄會以此名稱儲存，用於查詢與取消。</span>
+            </label>
+            <label class="cks-field">
+              <span class="field-label">預約類型</span>
+              <select id="bookingType" class="cks-select">
+                <option>單次預約（僅限選擇的單日）</option>
+                <option>每週重複（至學期末）</option>
+                <option>指定多個日期</option>
+              </select>
+            </label>
+          </div>
+
+          <!-- Step 2 -->
+          <div id="sheetStep2" class="sheet-step hidden">
+            <label class="cks-field">
+              <span class="field-label">用途 / 備註</span>
+              <input id="bookerPurpose" type="text" placeholder="例如：學會會議、補課、家長會" class="cks-input" />
+              <span class="field-hint">讓管理員了解此時段的使用情形。</span>
+            </label>
+            <div>
+              <div class="quick-picks-lbl">快速選取</div>
+              <div class="quick-picks" id="quickPicks"></div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="sheet-footer">
+          <button type="button" id="sheetBackBtn" class="btn btn-link hidden">← 上一步</button>
+          <span id="sheetStepLabel" class="step-label">步驟 1 / 2</span>
+          <button type="submit" id="sheetNextBtn" class="btn btn-primary btn-lg">下一步 →</button>
+        </footer>
+      </form>
+    </div>
+
+    <!-- ===== MORE ROOMS OVERLAY ===== -->
+    <div id="moreRoomsOverlay" class="modal-overlay hidden" aria-hidden="true">
+      <div class="modal-dialog" id="moreRoomsDialog" role="dialog">
+        <header class="modal-header">
+          <h3 class="modal-title">選擇課室 / 功能室</h3>
+          <button type="button" id="closeMoreRooms" class="icon-close-btn" aria-label="關閉">✕</button>
+        </header>
+        <div class="modal-body">
+          <input id="roomSearch" type="search" placeholder="輸入名稱或室號搜尋..." class="cks-input" />
+          <div class="seg-group">
+            <button class="seg-btn active" data-filter="all">全部</button>
+            <button class="seg-btn" data-filter="classroom">課室</button>
+            <button class="seg-btn" data-filter="special">功能室</button>
+          </div>
+          <div id="dialogRoomList" class="dialog-room-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TOAST ===== -->
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
 </html>
